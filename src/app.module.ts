@@ -1,3 +1,4 @@
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
@@ -6,18 +7,12 @@ import { BusinessModule } from './business/business.module';
 import { StaffmemberModule } from './staffmember/staffmember.module';
 
 
+
 @Module({
-  imports: [
+  imports: [ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      password: '123',
-      username: 'postgres',
-      entities: [],
-      database: 'smdata',
-      synchronize: true,
-      logging: true,
+      url: process.env.URI,
     }),
     AuthModule,
     UsersModule,
