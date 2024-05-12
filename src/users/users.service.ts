@@ -18,7 +18,7 @@ export class UsersService {
     },
   ];
 
-  async findOne(uname: string, pwd: string): Promise<User | undefined> {
+  async findOne(uname: string, pwd: string) {
     return this.users.find(user =>( user.uname === uname) && (user.pwd === pwd));
   }
 }
