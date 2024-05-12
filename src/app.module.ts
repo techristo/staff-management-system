@@ -10,22 +10,13 @@ import { StaffmemberModule } from './staffmember/staffmember.module';
 
 @Module({
   imports: [ConfigModule.forRoot(),
-   /* TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.HOST,
-      port: 5432,
-      password: process.env.PWD,
-      username: process.env.UNAME,
-      entities: [],
-      database: process.env.DB,
-      synchronize: true,
-      logging: true,
-    }),*/
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.URI,
       autoLoadEntities: true,
       ssl:{rejectUnauthorized: false},
+      entities: [],
+      synchronize: true,
     }),
     AuthModule,
     UsersModule,
